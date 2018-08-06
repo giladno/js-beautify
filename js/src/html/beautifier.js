@@ -805,8 +805,8 @@ function Beautifier(html_source, options, js_beautify, css_beautify) {
       if (token.type === 'TK_EOF') {
         break;
       }
-
-      switch (token.type) {
+      
+      switch (token.text.substr(0, 2) === '<%' ? '' : token.type) {
         case 'TK_TAG_START':
           if (!token.is_inline_tag && multi_parser.last_token.type !== 'TK_CONTENT') {
             if (token.parent) {
